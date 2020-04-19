@@ -20,6 +20,22 @@ class User:
     '''
     User.users.append(self)
 
+  @classmethod
+  def authenticate_user(cls, name, password):
+    '''
+    authenticate user loginname and password 
+
+    Args: 
+      login_username : name used by user to login
+      password: password for the user
+
+    Returns: 
+      boolean
+    '''
+    for user in cls.users:
+      if user.login_username == name and user.password == password:
+        return password
+    
   
   
   
