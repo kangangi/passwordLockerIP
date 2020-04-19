@@ -30,7 +30,7 @@ class User:
       password: password for the user
 
     Returns: 
-      boolean
+     password
     '''
     for user in cls.users:
       if user.login_username == name and user.password == password:
