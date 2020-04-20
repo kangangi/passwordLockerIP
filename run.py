@@ -47,7 +47,14 @@ def display_credentials():
   '''
   return Credentials.display_credential()
 
+def generate_pass():
+  '''
+  Function that generates random password
+  '''
+  return Credentials.generate_password()
+
 def main():
+
   print("Heyyy! Welcome to Password Locker")
   print("We can save your passwords for you")
   print("What is your name?")
@@ -91,8 +98,14 @@ def main():
             print("-"*20)
             print("Account Name(eg Twitter)...")
             account_name = input()
-            print("Account Password...")
-            account_password = input()
+            print("\n")
+            print("Would you like a generated password? (y/n)?")
+            gen_pass = input().lower()
+            if gen_pass == 'y':
+              account_password = generate_pass()
+            else:
+              print("Enter the account password")
+              account_password = input()
         
             save_credentials(create_credentials(account_name,account_password))
             print(f"Account details for {account_name} have been saved")
