@@ -67,14 +67,18 @@ def credential_exist(name):
 
 def main():
 
-  print("Heyyy! Welcome to Password Locker")
-  print("We can save your passwords for you")
+  print("PASSWORD LOCKER")
+  print("--"*20)
+  print("An application that saves your account Details")
+  print("\n")
   print("What is your name?")
   user_name = input()
+  print("\n")
 
   print(f"Hello {user_name}. Are you a new user or would you like to create an account")
+
   while True:
-    print("Use these short code: nu - new user, li - log in , ex - exit the password locker")
+    print("Use these short codes:\n - nu - new user \n -li - log in \n -ex - exit the password locker")
     authentication_short_code = input().lower()
     if authentication_short_code =='nu':
       print("New account")
@@ -94,6 +98,7 @@ def main():
       login_username = input()
       print("Enter your password")
       password = input()
+      print("\n")
 
       authenticated_password = user_authenticate(login_username,password)
       if authenticated_password == password:
@@ -102,7 +107,7 @@ def main():
         print("What would you like to do?")
 
         while True:
-          print("Use the following short codes: cc - create new credentials, fc - find a specific credential/delete a credential, dc - display all  your accounts, lo - log-out")
+          print("Use the following short codes: \n - cc - create new credentials \n - fc - find a specific credential/delete a credential, \n - dc - display all  your accounts \n - lo - log-out")
           credentials_short_code = input().lower()
 
           if credentials_short_code == 'cc':
@@ -118,12 +123,18 @@ def main():
             if gen_pass == 'y':
               account_password = generate_pass()
               print(f"Password generated is {account_password}")
+              save_credentials(create_credentials(account_name,account_username,account_password))
             else:
-              print("Enter the account password")
+              print("Enter the account password, (should be longer than 7 characters long)")
               account_password = input()
-        
-            save_credentials(create_credentials(account_name,account_username,account_password))
-            print(f"Account details for {account_name} have been saved")
+              
+              if len(account_password) >= 7:
+                save_credentials(create_credentials(account_name,account_username,account_password))
+                print(f"Account details for {account_name} have been saved")
+                print("\n")
+
+              else:
+                print("Password is too short. Try again")
 
           elif credentials_short_code == "dc":
             if display_credentials():
@@ -152,6 +163,8 @@ def main():
                 print("Credentials have been deleted")
               else:
                 print("Credentials have not been deleted")
+            else:
+              print("The credentials for that name do not exist")
 
           elif credentials_short_code == 'lo':
             print("You have successfully logged out..")
