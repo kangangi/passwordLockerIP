@@ -10,11 +10,11 @@ def create_user(login_username, password):
   new_user = User(login_username,password)
   return new_user
 
-def create_credentials(account_name, account_password):
+def create_credentials(account_name,account_username, account_password):
   '''
   Function to create new credential
   '''
-  new_credential = Credentials(account_name, account_password)
+  new_credential = Credentials(account_name,account_username, account_password)
   return new_credential
 
 def save_user(user):
@@ -98,16 +98,19 @@ def main():
             print("-"*20)
             print("Account Name(eg Twitter)...")
             account_name = input()
+            print(f"What is your username for {account_name}")
+            account_username = input()
             print("\n")
             print("Would you like a generated password? (y/n)?")
             gen_pass = input().lower()
             if gen_pass == 'y':
               account_password = generate_pass()
+              print(f"Password generated is {account_password}")
             else:
               print("Enter the account password")
               account_password = input()
         
-            save_credentials(create_credentials(account_name,account_password))
+            save_credentials(create_credentials(account_name,account_username,account_password))
             print(f"Account details for {account_name} have been saved")
 
           elif credentials_short_code == "dc":
@@ -115,7 +118,7 @@ def main():
               print("Here is a list of all your accounts and there credentials")
               print('/n')
               for credential in display_credentials():
-                print(f"{credential.account_name} , {credential.account_password}")
+                print(f"{credential.account_name} ,username: {credential.account_username}, password:  {credential.account_password}")
                 print("\n")
             else:
               print("You don't seem to have any credentials saved")
