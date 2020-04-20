@@ -1,6 +1,7 @@
 import unittest
 from credentials import Credentials
 
+
 class TestCredentials(unittest.TestCase):
   '''
   Test class that defines test cases for contact class behaviours
@@ -78,6 +79,7 @@ class TestCredentials(unittest.TestCase):
     test_credential.save_credential()
     credential_exist = Credentials.name_exist("Test")
     self.assertTrue(credential_exist)
-    
+
+  
 if __name__ == '__main__':
   unittest.main()

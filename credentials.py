@@ -1,5 +1,6 @@
 from random import randint
 
+
 class Credentials:
   '''
   Class that generates new instances of credentials
@@ -43,7 +44,7 @@ class Credentials:
     mylist  = ["a","b","c","d","e","f", "g", "h", "i", "j","k","l", "m","n","o","p","q","r","s","t", "u","v","w","x","y","z","0","1","2","3","4","5","6","7","8","9"]
     random_pass = ""
     length = 0
-    while (length < 7):
+    while (length < 8):
       random_character = mylist[randint(0,len(mylist) -1)]
       random_pass += random_character
       length += 1
@@ -77,6 +78,8 @@ class Credentials:
     for credential in cls.credentials_list:
       if credential.account_name == name:
         return credential
+
+  
 
   
 

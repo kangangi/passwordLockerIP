@@ -139,7 +139,7 @@ def main():
           elif credentials_short_code == "dc":
             if display_credentials():
               print("Here is a list of all your accounts and there credentials")
-              print('/n')
+              print('\n')
               for credential in display_credentials():
                 print(f"{credential.account_name} ,username: {credential.account_username}, password:  {credential.account_password}")
                 print("\n")
