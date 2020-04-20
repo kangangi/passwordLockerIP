@@ -59,6 +59,12 @@ def find_credential(name):
   '''
   return Credentials.find_by_name(name)
 
+def credential_exist(name):
+  '''
+  Function to check that credential exist
+  '''
+  return Credentials.name_exist(name)
+
 def main():
 
   print("Heyyy! Welcome to Password Locker")
@@ -132,8 +138,20 @@ def main():
 
           elif credentials_short_code == "fc":
             print("Enter the name of account you are looking for e.g Twitter...")
-            
+            searched_name = input()
 
+            if credential_exist(searched_name):
+              searched_credential = find_credential(searched_name)
+              print(f"{searched_credential.account_name} , username: {searched_credential.account_username}, password: {searched_credential.account_password} ")
+
+              print(f"Would you like to delete credentials for {searched_credential.account_name}? (y/n)")
+              delete_credential = input().lower()
+
+              if delete_credential == 'y':
+                del_credential(searched_credential)
+                print("Credentials have been deleted")
+              else:
+                print("Credentials have not been deleted")
 
           elif credentials_short_code == 'lo':
             print("You have successfully logged out..")
