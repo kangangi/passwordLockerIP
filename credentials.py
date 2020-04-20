@@ -49,4 +49,19 @@ class Credentials:
       length += 1
     return random_pass
 
+  @classmethod
+  def find_by_name(cls,name):
+    '''
+    Method that takes in a name and returns the credentials
+    Args:
+      name: name of account to be found
+    Returns:
+      Credentials of the account
+    '''
+    for credential in cls.credentials_list:
+      if credential.account_name == name:
+        return credential
+
+
+
 
