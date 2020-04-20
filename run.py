@@ -68,7 +68,7 @@ def credential_exist(name):
 def main():
 
   print("PASSWORD LOCKER")
-  print("--"*20)
+  print("--"*30)
   print("An application that saves your account Details")
   print("\n")
   print("What is your name?")
@@ -76,22 +76,25 @@ def main():
   print("\n")
 
   print(f"Hello {user_name}. Are you a new user or would you like to create an account")
+  print("\n")
 
   while True:
-    print("Use these short codes:\n - nu - new user \n -li - log in \n -ex - exit the password locker")
+    print("Use these short codes:\n -nu: new user \n -li:log in \n -ex: exit the password locker")
     authentication_short_code = input().lower()
     if authentication_short_code =='nu':
       print("New account")
-      print("-"*20)
+      print("-"*30)
       print("Username")
       login_username = input()
       print("Password")
       password = input()
 
       save_user(create_user(login_username,password))
-      print('\n')
+      print("\n")
+      print("-"*30)
       print(f"Account for {login_username} created. Proceed to log in")
-      print('\n')
+      print("-"*30)
+      print("\n")
 
     elif authentication_short_code == 'li':
       print("Enter your user name")
@@ -102,17 +105,20 @@ def main():
 
       authenticated_password = user_authenticate(login_username,password)
       if authenticated_password == password:
+        print("-"*30)
         print("You have successfully logged in")
+        print("-"*30)
         print("\n")
         print("What would you like to do?")
 
         while True:
-          print("Use the following short codes: \n - cc - create new credentials \n - fc - find a specific credential/delete a credential, \n - dc - display all  your accounts \n - lo - log-out")
+          print("Use the following short codes: \n -cc: create new credentials \n -fc: find a specific credential/delete a credential, \n -dc: display all  your accounts \n -lo: log-out")
           credentials_short_code = input().lower()
+          print("-"*30)
 
           if credentials_short_code == 'cc':
             print("New Credentials")
-            print("-"*20)
+            print("-"*30)
             print("Account Name(eg Twitter)...")
             account_name = input()
             print(f"What is your username for {account_name}")
