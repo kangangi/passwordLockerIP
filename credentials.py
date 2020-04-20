@@ -50,6 +50,22 @@ class Credentials:
     return random_pass
 
   @classmethod
+  def name_exist(cls,name):
+    '''
+    Method that checks if a credential exist from credentials list
+
+    Args:
+      name : name to search if account exists
+    Return:
+      Boolean
+    '''
+    for crendential in cls.credentials_list:
+      if crendential.account_name == name:
+        return True
+    return False
+
+
+  @classmethod
   def find_by_name(cls,name):
     '''
     Method that takes in a name and returns the credentials
@@ -61,6 +77,8 @@ class Credentials:
     for credential in cls.credentials_list:
       if credential.account_name == name:
         return credential
+
+  
 
 
 

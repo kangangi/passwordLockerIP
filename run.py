@@ -53,6 +53,12 @@ def generate_pass():
   '''
   return Credentials.generate_password()
 
+def find_credential(name):
+  '''
+  Function that finds credentials using the name of the account
+  '''
+  return Credentials.find_by_name(name)
+
 def main():
 
   print("Heyyy! Welcome to Password Locker")
@@ -90,7 +96,7 @@ def main():
         print("What would you like to do?")
 
         while True:
-          print("Use the following short codes: cc - create new credentials, dc - display your accounts lo - log-out")
+          print("Use the following short codes: cc - create new credentials, fc - find a specific credential/delete a credential, dc - display all  your accounts, lo - log-out")
           credentials_short_code = input().lower()
 
           if credentials_short_code == 'cc':
@@ -123,6 +129,11 @@ def main():
             else:
               print("You don't seem to have any credentials saved")
               print("\n")
+
+          elif credentials_short_code == "fc":
+            print("Enter the name of account you are looking for e.g Twitter...")
+            
+
 
           elif credentials_short_code == 'lo':
             print("You have successfully logged out..")
